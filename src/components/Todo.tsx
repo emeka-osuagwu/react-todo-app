@@ -9,7 +9,7 @@ function Component({ todos }: any) {
                     <tr>
                         <th>#</th>
                         <th>Title</th>
-                        <th>Complete</th>
+                        <th>Completed</th>
                     </tr>
                 </thead>
                 <tbody>

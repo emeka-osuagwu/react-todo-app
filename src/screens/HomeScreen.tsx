@@ -8,6 +8,7 @@ import Todo from "../components/Todo";
 import FilterComponent from "../components/FilterComponent";
 
 function Component(props: any) {
+    const [error, setError]: any = React.useState(false);
     const [todos, setTodo]: any = React.useState([
         {
             userId: 1,
@@ -1240,6 +1241,7 @@ function Component(props: any) {
             completed: false,
         },
     ]);
+
     const { getTodos, todoReducer } = props;
 
     React.useEffect(() => {
@@ -1249,14 +1251,18 @@ function Component(props: any) {
     const searchFilter = (text: any) => {
         if (text == null || text == "") {
             setTodo(todoReducer.todos);
+            setError(false);
         } else {
-            const result = todos.filter((todo: any) =>
+            const result = todoReducer.todos.filter((todo: any) =>
                 todo.title
                     .trim()
                     .toLowerCase()
                     .includes(text.trim().toLowerCase())
             );
-            setTodo(result.length ? result : todoReducer.todos);
+
+            setTodo(result);
+
+            setError(result.length ? false : true);
         }
     };
 
@@ -1264,7 +1270,16 @@ function Component(props: any) {
         const result = todoReducer.todos.filter(
             (todo: any) => todo.completed == status
         );
+
         setTodo(result.length ? result : todoReducer.todos);
+    };
+
+    const notificationComponent = () => {
+        return (
+            <RB.Alert variant={"danger"}>
+                No result for the given search parameters!
+            </RB.Alert>
+        );
     };
 
     return (
@@ -1276,6 +1291,7 @@ function Component(props: any) {
                         statusFilter={statusFilter}
                         searchFilter={searchFilter}
                     />
+                    {error && notificationComponent()}
                     <Todo todos={todos} />
                 </RB.Col>
             </RB.Row>
