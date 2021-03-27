@@ -1,7 +1,18 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 
-function Component({ todos }: any) {
+interface TodoInterface {
+    userId: number;
+    id: number;
+    title: string;
+    completed: boolean;
+}
+
+interface PropsInterface {
+    todos: Array<TodoInterface>;
+}
+
+function Component({ todos }: PropsInterface) {
     return (
         <>
             <Table striped bordered hover>
@@ -13,8 +24,8 @@ function Component({ todos }: any) {
                     </tr>
                 </thead>
                 <tbody>
-                    {todos.map((item: any, index: any) => (
-                        <tr>
+                    {todos.map((item: TodoInterface, index: number) => (
+                        <tr key={index}>
                             <td>{index + 1}</td>
                             <td>{item.title}</td>
                             <td>{item.completed ? "Yes" : "No"}</td>
@@ -25,5 +36,9 @@ function Component({ todos }: any) {
         </>
     );
 }
+
+Component.defaultProps = {
+    todos: [],
+};
 
 export default Component;

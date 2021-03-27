@@ -7,8 +7,17 @@ import * as actions from "../store/actions";
 import Todo from "../components/Todo";
 import FilterComponent from "../components/FilterComponent";
 
+interface searchFilterInterface {
+    (source: string): void;
+}
+
+interface statusFilterInterface {
+    (source: boolean): void;
+}
+
 function Component(props: any) {
-    const [error, setError]: any = React.useState(false);
+    const [error, setError] = React.useState<boolean>(false);
+
     const [todos, setTodo]: any = React.useState([
         {
             userId: 1,
@@ -1242,13 +1251,13 @@ function Component(props: any) {
         },
     ]);
 
-    const { getTodos, todoReducer } = props;
+    const { todoReducer } = props;
 
     React.useEffect(() => {
-        getTodos();
+        // getTodos();
     }, [true, todos]);
 
-    const searchFilter = (text: any) => {
+    const searchFilter: searchFilterInterface = (text: string) => {
         if (text == null || text == "") {
             setTodo(todoReducer.todos);
             setError(false);
@@ -1266,7 +1275,7 @@ function Component(props: any) {
         }
     };
 
-    const statusFilter = (status: boolean) => {
+    const statusFilter: statusFilterInterface = (status: boolean) => {
         const result = todoReducer.todos.filter(
             (todo: any) => todo.completed == status
         );
@@ -1286,7 +1295,7 @@ function Component(props: any) {
         <RB.Container>
             <RB.Row>
                 <RB.Col>
-                    <h1>Todos</h1>
+                    <h1 style={{ marginTop: 40, marginBottom: 30 }}>Todos</h1>
                     <FilterComponent
                         statusFilter={statusFilter}
                         searchFilter={searchFilter}
