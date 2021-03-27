@@ -1260,12 +1260,22 @@ function Component(props: any) {
         }
     };
 
+    const statusFilter = (status: boolean) => {
+        const result = todoReducer.todos.filter(
+            (todo: any) => todo.completed == status
+        );
+        setTodo(result.length ? result : todoReducer.todos);
+    };
+
     return (
         <RB.Container>
             <RB.Row>
                 <RB.Col>
                     <h1>Todos</h1>
-                    <FilterComponent searchFilter={searchFilter} />
+                    <FilterComponent
+                        statusFilter={statusFilter}
+                        searchFilter={searchFilter}
+                    />
                     <Todo todos={todos} />
                 </RB.Col>
             </RB.Row>

@@ -1,7 +1,7 @@
 import React from "react";
 import * as RB from "react-bootstrap";
 
-function Component({ searchFilter }: any) {
+function Component({ searchFilter, statusFilter }: any) {
     return (
         <RB.Form>
             <RB.Row>
@@ -20,9 +20,15 @@ function Component({ searchFilter }: any) {
                 <RB.Col sm={6}>
                     <RB.Form.Group controlId="exampleRB.Form.ControlSelect1">
                         <RB.Form.Label>Example select</RB.Form.Label>
-                        <RB.Form.Control as="select">
-                            <option>Yes</option>
-                            <option>No</option>
+                        <RB.Form.Control
+                            onChange={(event: any) =>
+                                statusFilter(event.target.value)
+                            }
+                            as="select"
+                        >
+                            <option>Select</option>
+                            <option value={1}>Yes</option>
+                            <option value={0}>No</option>
                         </RB.Form.Control>
                     </RB.Form.Group>
                 </RB.Col>
