@@ -8,18 +8,16 @@ function Component({ todos }: any) {
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                        <th>Title</th>
+                        <th>Complete</th>
                     </tr>
                 </thead>
                 <tbody>
                     {todos.map((item: any, index: any) => (
                         <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <td>{index + 1}</td>
+                            <td>{item.title}</td>
+                            <td>{item.completed ? "Yes" : "No"}</td>
                         </tr>
                     ))}
                 </tbody>
