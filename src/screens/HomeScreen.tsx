@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import * as actions from "../store/actions";
 
 import Todo from "../components/Todo";
+import FilterComponent from "../components/FilterComponent";
 
 function Component(props: any) {
     const { getTodos, todoReducer } = props;
@@ -19,8 +20,9 @@ function Component(props: any) {
         <RB.Container>
             <RB.Row>
                 <RB.Col>
-                    1 of 1<h1>Docler FE Homework</h1>
-                    <Todo todos={[1, 2, 3]}></Todo>
+                    <h1>Todos</h1>
+                    <FilterComponent />
+                    <Todo todos={todos} />
                 </RB.Col>
             </RB.Row>
         </RB.Container>
