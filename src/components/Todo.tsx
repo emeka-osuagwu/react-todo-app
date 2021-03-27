@@ -1,18 +1,29 @@
-import React from 'react';
+import React from "react";
+import { Table } from "react-bootstrap";
 
-function Component() {
+function Component({ todos }: any) {
     return (
         <>
-            <ul>
-                <li>Create the layout based on the designs at the bottom of the task's description</li>
-                <li>Make sure the layout looks great both on desktop and on mobile</li>
-                <li>Focus on good UX</li>
-                <li>Use React with TypeScript</li>
-                <li>Cover the functionality with tests</li>
-                <li>Get data for the list from <a href="https://jsonplaceholder.typicode.com/todos" target="_blank" rel="noopener noreferrer">https://jsonplaceholder.typicode.com/todos</a> using an asynchronous call</li>
-                <li>Pay attention to architecture and code organizing</li>
-                <li>Feel free to add new dependencies if you need anything</li>
-            </ul>
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {todos.map((item: any, index: any) => (
+                        <tr>
+                            <td>1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </Table>
         </>
     );
 }

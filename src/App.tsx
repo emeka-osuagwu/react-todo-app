@@ -1,12 +1,14 @@
 import React from 'react';
+import Router from './router'
 import './App.css';
 
-import HomeScreen from "./screens/HomeScreen"
+import store from './store'
+import { Provider } from 'react-redux'
 
-function App() {
-    return (
-        <HomeScreen />
-    );
+export default function App() {
+	return (
+		<Provider store={store}>
+			<Router />
+		</Provider>
+	);
 }
-
-export default App;

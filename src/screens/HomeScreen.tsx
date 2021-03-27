@@ -1,14 +1,34 @@
-import React from 'react';
+import React from "react";
+import * as RB from "react-bootstrap";
 
-import Todo from "../components/Todo"
+import { connect } from "react-redux";
+import * as actions from "../store/actions";
 
-function App() {
+import Todo from "../components/Todo";
+
+function Component(props: any) {
+    const { getTodos, todoReducer } = props;
+
+    const { todos } = todoReducer;
+
+    React.useEffect(() => {
+        getTodos();
+    }, [true]);
+
     return (
-        <>
-            <h1>Docler FE Homework</h1>
-            <Todo></Todo>
-        </>
+        <RB.Container>
+            <RB.Row>
+                <RB.Col>
+                    1 of 1<h1>Docler FE Homework</h1>
+                    <Todo todos={[1, 2, 3]}></Todo>
+                </RB.Col>
+            </RB.Row>
+        </RB.Container>
     );
 }
 
-export default App;
+const mapStateToProps = ({ todoReducer }: any) => ({
+    todoReducer,
+});
+
+export default connect(mapStateToProps, actions)(Component);
