@@ -1,26 +1,31 @@
 import * as TYPES from "../types";
 
-const initialState = {
+interface DefaultStateI {
+    loading: boolean,
+    todos: Array<TYPES.TodoInterface>
+  }
+  
+  const initialState: DefaultStateI = {
     todos: [],
-};
+    loading: false
+  };
 
-export default function (state = initialState, action) {
+export default function (state = initialState, action: any) {
     const { type, payload } = action;
 
     switch (type) {
-        case TYPES.TODOS:
-            let new_todo = state.todos;
-            new_todo.unshift(payload);
 
+        case TYPES.LOADING:
             return {
                 ...state,
-                todo: new_todo,
+                loading: payload,
             };
 
         case TYPES.SET_TODOS:
             return {
                 ...state,
                 todos: payload,
+                loading: false,
             };
 
         default:

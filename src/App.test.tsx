@@ -19,3 +19,9 @@ test("renders filter select component", () => {
     const value = screen.getByText(/Completed:/i);
     expect(value).toBeInTheDocument();
 });
+
+test("renders loading component", () => {
+    render(<App />);
+    const value = screen.getByText(/loading... please wait!/i);
+    expect(value).toBeInTheDocument();
+});
