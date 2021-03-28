@@ -18,7 +18,7 @@ function Component() {
     const todoReducer = useSelector((state: RootStore) => state.todoReducer);
     const [error, setError] = React.useState<boolean>(false);
     const [loading, setLoading] = React.useState<boolean>(false);
-    const [todos, setTodo] = React.useState<Array<TYPES.TodoInterface>>([]);
+    const [todos, setTodo] = React.useState<TYPES.TodoInterface[]>([]);
 
     React.useEffect(() => {
         const getRemoteData = async () => {
@@ -52,6 +52,7 @@ function Component() {
     };
 
     const statusFilter: TYPES.statusFilterInterface = (status: boolean) => {
+        setError(false);
         const result = todoReducer.todos.filter(
             (todo: any) => todo.completed == status
         );

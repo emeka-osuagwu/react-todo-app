@@ -1,24 +1,19 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import reduxPromise from "redux-promise";
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+
 import todoReducer from './reducers/todo_reducer';
 
+const middleware = [thunk];
 
 const rootReducer = combineReducers({
 	todoReducer,
 });
 
-const middlewares = applyMiddleware(
-  thunk,
-  reduxPromise
-);
-
 const Store = createStore(
   rootReducer,
-  composeWithDevTools(middlewares)
+  composeWithDevTools(applyMiddleware(...middleware))
 );
 
 export type RootStore = ReturnType<typeof rootReducer>
-
 export default Store

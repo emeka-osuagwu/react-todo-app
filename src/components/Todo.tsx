@@ -25,8 +25,8 @@ function Component({ todos }: PropsInterface) {
                 </thead>
                 <tbody>
                     {todos.map((item: TodoInterface, index: number) => (
-                        <tr key={index}>
-                            <td>{index + 1}</td>
+                        <tr data-test-id={item.id} key={item.id}>
+                            <td>{item.id}</td>
                             <td>{item.title}</td>
                             <td>{item.completed ? "Yes" : "No"}</td>
                         </tr>
