@@ -2,16 +2,16 @@ import React from "react";
 import { rest } from "msw";
 import thunk from "redux-thunk";
 import fetchMock from "fetch-mock";
-import configureMockStore from "redux-mock-store";
-import * as TYPES from "../store/types";
 import { setupServer } from "msw/node";
-import { render, cleanup, fireEvent } from "@testing-library/react";
+import configureMockStore from "redux-mock-store";
+import { render, fireEvent } from "@testing-library/react";
+
 import "@testing-library/jest-dom/extend-expect";
 
 import App from "../App";
-import FilterComponent from "../components/FilterComponent";
-
 import todos from "./demo_data";
+import * as TYPES from "../store/types";
+import FilterComponent from "../components/FilterComponent";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
