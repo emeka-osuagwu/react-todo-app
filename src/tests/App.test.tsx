@@ -1,12 +1,20 @@
 import React from "react";
 import { rest } from "msw";
+import thunk from "redux-thunk";
+import fetchMock from "fetch-mock";
+import configureMockStore from "redux-mock-store";
+import * as TYPES from "../store/types";
 import { setupServer } from "msw/node";
 import { render, cleanup, fireEvent } from "@testing-library/react";
-
 import "@testing-library/jest-dom/extend-expect";
 
 import App from "../App";
 import FilterComponent from "../components/FilterComponent";
+
+import todos from "./demo_data";
+
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
 
 const data = [
     {
@@ -53,16 +61,17 @@ test("renders loading component", () => {
     expect(input.value).toBe("new text");
 });
 
-// test("handles server error", async () => {
-//     server.use(
-//         rest.get("/greeting", (req, res, ctx) => {
-//             return res(ctx.status(500));
-//         })
-//     );
+test("handles server", async () => {
+    fetchMock.getOnce("/todos", {
+        body: { todos },
+        headers: { "content-type": "application/json" },
+    });
 
-//     render(<App />);
-//     const value = screen.getByText(
-//         /No result for the given search parameters/i
-//     );
-//     expect(value).toBeInTheDocument();
-// });
+    const expectedActions = {
+        type: TYPES.SET_TODOS,
+        payload: todos,
+    };
+
+    const store = mockStore({ todos: [] });
+    expect(expectedActions).toEqual(expectedActions);
+});
