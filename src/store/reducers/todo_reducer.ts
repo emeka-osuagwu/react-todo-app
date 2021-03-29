@@ -1,14 +1,9 @@
 import * as TYPES from "../types";
 
-interface DefaultStateI {
-    loading: boolean,
-    todos: Array<TYPES.TodoInterface>
-  }
-  
-  const initialState: DefaultStateI = {
+const initialState: TYPES.DefaultStateI | any = {
     todos: [],
     loading: false
-  };
+};
 
 export default function (state = initialState, action: any) {
     const { type, payload } = action;

@@ -3,7 +3,6 @@ import { rest } from "msw";
 import { setupServer } from "msw/node";
 import { render, cleanup, fireEvent } from "@testing-library/react";
 
-import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
 import App from "../App";

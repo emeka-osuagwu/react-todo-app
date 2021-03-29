@@ -3,6 +3,11 @@ export const LOADING = 'LOADING';
 export const SET_TODOS = 'SET_TODOS';
 
 
+export type DefaultStateI  = {
+    loading: boolean,
+    todos: TodoInterface[]
+}
+  
 export interface searchFilterInterface {
     (source: string): void;
 }
