@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders same mock up 1`] = `
+<div
+  className="fade alert alert-danger show"
+  role="alert"
+>
+  No result for the given search parameters!
+</div>
+`;

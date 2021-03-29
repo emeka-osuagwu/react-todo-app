@@ -14,8 +14,8 @@ import NotificationComponent from "../components/NotificationComponent";
 
 function Component() {
     const dispatch = useDispatch();
-
     const todoReducer = useSelector((state: RootStore) => state.todoReducer);
+
     const [error, setError] = React.useState<boolean>(false);
     const [loading, setLoading] = React.useState<boolean>(false);
     const [todos, setTodo] = React.useState<TYPES.TodoInterface[]>([]);
@@ -27,12 +27,14 @@ function Component() {
                 const { data } = await axios.get("/todos");
                 setTodo(data);
                 dispatch(actions.updateTodoState(data));
-            } catch (error) {}
+            } catch (error) {
+                setError(true);
+            }
             setLoading(false);
         };
 
         getRemoteData();
-    }, []);
+    }, [dispatch]);
 
     const searchFilter: TYPES.searchFilterInterface = (text: string) => {
         if (text == null || text == "") {

@@ -9,7 +9,7 @@ interface TodoInterface {
 }
 
 interface PropsInterface {
-    todos: Array<TodoInterface>;
+    todos: TodoInterface[];
 }
 
 function Component({ todos }: PropsInterface) {
@@ -25,7 +25,7 @@ function Component({ todos }: PropsInterface) {
                 </thead>
                 <tbody>
                     {todos.map((item: TodoInterface, index: number) => (
-                        <tr data-test-id={item.id} key={item.id}>
+                        <tr role="row" key={item.id}>
                             <td>{item.id}</td>
                             <td>{item.title}</td>
                             <td>{item.completed ? "Yes" : "No"}</td>

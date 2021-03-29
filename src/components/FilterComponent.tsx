@@ -59,8 +59,8 @@ function Component({ searchFilter, statusFilter }: FiltetComponentInterface) {
 }
 
 Component.defaultProps = {
-    searchFilter: () => console.log("please pass right function"),
-    statusFilter: () => console.log("please pass right function"),
+    searchFilter: () => {},
+    statusFilter: () => {},
 };
 
 export default Component;

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders same mock up 1`] = `
+<div
+  className="fade alert alert-success show"
+  role="alert"
+>
+  loading... please wait!
+</div>
+`;

@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders same mock up 1`] = `
+<form
+  className=""
+  style={
+    Object {
+      "marginBottom": 30,
+    }
+  }
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-sm-6"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-sm-2"
+        >
+          <div
+            className="form-group"
+          >
+            <h5
+              style={
+                Object {
+                  "marginTop": 6,
+                }
+              }
+            >
+              Search:
+            </h5>
+          </div>
+        </div>
+        <div
+          className="col-sm-10"
+        >
+          <div
+            className="form-group"
+          >
+            <input
+              className="form-control"
+              id="exampleRB.Form.ControlInput1"
+              onChange={[Function]}
+              placeholder="keyword..."
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="col-sm-6"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-sm-3"
+        >
+          <div
+            className="form-group"
+          >
+            <h5
+              style={
+                Object {
+                  "marginTop": 6,
+                }
+              }
+            >
+              Completed:
+            </h5>
+          </div>
+        </div>
+        <div
+          className="col-sm-9"
+        >
+          <div
+            className="form-group"
+          >
+            <select
+              className="form-control"
+              id="exampleRB.Form.ControlSelect1"
+              onChange={[Function]}
+            >
+              <option>
+                Select
+              </option>
+              <option
+                value={1}
+              >
+                Yes
+              </option>
+              <option
+                value={0}
+              >
+                No
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+`;

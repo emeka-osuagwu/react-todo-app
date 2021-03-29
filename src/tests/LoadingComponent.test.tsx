@@ -1,12 +1,18 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import renderer from "react-test-renderer";
+import { render } from "@testing-library/react";
 
 import "@testing-library/jest-dom/extend-expect";
 
 import LoadingComponent from "../components/LoadingComponent";
 
 test("renders without crashing", () => {
-    render(<LoadingComponent />);
-    const title = screen.getByText("loading... please wait!");
+    const { getByText } = render(<LoadingComponent />);
+    const title = getByText("loading... please wait!");
     expect(title).toBeInTheDocument();
+});
+
+test("renders same mock up", () => {
+    const tree = renderer.create(<LoadingComponent />).toJSON();
+    expect(tree).toMatchSnapshot();
 });
